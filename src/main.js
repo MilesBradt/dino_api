@@ -10,9 +10,12 @@ $(document).ready(function() {
   let promise = dinoNames.getDinoNames();
   console.log(promise);
   promise.then(function(response) {
-    console.log(response);
+    console.log("before: ",response);
+    console.log("after: ",JSON.parse(response));
+    const body = JSON.parse(response)
 
-    document.getElementById("output").innerHTML = response;
+    $("#output").text(body)
+    // document.getElementById("output").innerHTML = response;
   }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
   });
